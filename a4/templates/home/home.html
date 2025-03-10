@@ -23,7 +23,7 @@
         <div class="menu">
           <a href="{% url 'projects' %}">проекты</a>
           <a href="{% url 'projects' %}#servis">услуги</a>
-          {% comment %} <a href="{% url 'price' %}">цены</a> {% endcomment %}
+          <a href="{% url 'price' %}">цены</a>
           {% comment %} <a href="{% url 'reviews' %}">отзывы</a> {% endcomment %}
           <a href="{% url 'home' %}#contact">контакты</a>
           <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
@@ -44,7 +44,7 @@
             Создадим вам рекламу любого формата и поднимем узнаваемость
             компании за короткий период
           </p>
-          {% comment %} <a href="{% url 'price' %}"><button>Подробнее</button></a> {% endcomment %}
+          <a href="{% url 'price' %}"><button>Подробнее</button></a>
         </div>
         <img src="{% static 'imgs/outdoor-advertising-light-box-street 1.jpg' %}" alt="" />
       </div>
@@ -149,13 +149,13 @@
         <div class="right_menu">
           <a href="{% url 'projects' %}">
             <p>проекты</p>
-          {% comment %} </a> {% endcomment %}
+          </a>
           <a href="{% url 'projects' %}#servis">
             <p style="margin: 11px 0;">услуги</p>
-          {% comment %} </a> {% endcomment %}
-          {% comment %} <a href="{% url 'price' %}"> {% endcomment %}
+          </a>
+          <a href="{% url 'price' %}">
             <p>цены</p>
-          {% comment %} </a> {% endcomment %}
+          </a>
         </div>
       </div>
     </footer>

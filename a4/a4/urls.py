@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('projects/', include('projects.urls')),
+    path('price/', include('price.urls')),
 ]
 
 if settings.MEDIA_ROOT:

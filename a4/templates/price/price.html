@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/projects.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/price.css' %}" />
   <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <title>Проекты</title>
+  <title>Цены</title>
 </head>
 
 <body>
@@ -35,29 +35,55 @@
         </div>
       </header>
       <div class="content_home_page">
-        <p class="title_home_page">Проекты</p>
+        <p class="title_home_page">Цены</p>
         <img src="{% static 'imgs/Group 11.jpg' %}" alt="" />
-      </div>
-      <div class="slider">
-        <img src="{% static 'imgs/Group 37.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 38.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 40.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 41.jpg' %}" alt="" />
-      </div>
-    </div>
-    <div class="services_page">
-      <p class="title_services_page" id="servis">Услуги</p>
-      <div class="block_content">
-        <div class="line"></div>
-        <div class="text_content">
-          <p>разработка дизайна</p>
-          <p>работа с согласованием вывесок</p>
-          <p>ремонт вывесок</p>
-          <p>работа промышленных альпинистов</p>
-          <p>монтаж</p>
+        <div class="blocks_price">
+          <div class="block">
+            <div class="title_price">
+              <p>
+                Тариф <br />
+                “Базовый”
+              </p>
+            </div>
+            <p class="desc_block">- анализ целевой аудитории</p>
+            <p class="desc_block">- создание 1 рекламного объявления</p>
+            <p class="desc_block">
+              - настройка и запуск рекламной кампании в одной социальной сети
+            </p>
+            <p class="desc_block">- ежемесячный отчет о результатах</p>
+            <button><b>10 тычяч/мес</b></button>
+          </div>
+          <div class="block">
+            <div class="title_price">
+              <p>Тариф<br />“Стандартный”</p>
+            </div>
+            <p class="desc_block">- все услуги Базового тарифа</p>
+            <p class="desc_block">- создание до 3 рекламных объявлений</p>
+            <p class="desc_block">
+              - настройка и запуск кампании в двух социальных сетях
+            </p>
+            <p class="desc_block">- оптимизация кампаний раз в две недели</p>
+            <p class="desc_block">
+              - поддержка по электронной почте и телефону
+            </p>
+            <button><b>25 тычяч/мес</b></button>
+          </div>
+          <div class="block">
+            <div class="title_price">
+              <p>Тариф<br />“Премиум”</p>
+            </div>
+            <p class="desc_block">- все услуги Стандартного тарифа</p>
+            <p class="desc_block">
+              - создание до 5 рекламных объявлений с A/B тестированием
+            </p>
+            <p class="desc_block">- запуск кампании в трех</p>
+            <p class="desc_block">
+              - еженедельная оптимизация и консультации
+            </p>
+            <p class="desc_block">- поддержка через мессенджеры</p>
+            <button><b>35 тычяч/мес</b></button>
+          </div>
         </div>
-        <img class="poz" src="{% static 'imgs/1271.jpg' %}" alt="" />
-        <img class="poz1" src="{% static 'imgs/logo-design.jpg' %}" alt="" />
       </div>
     </div>
     <footer>
@@ -127,9 +153,6 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="{% static 'js/slick.min.js' %}"></script>
-  <script src="{% static 'js/slider.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/auth.js' %}"></script>
 </body>
