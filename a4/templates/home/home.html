@@ -24,7 +24,7 @@
           <a href="{% url 'projects' %}">проекты</a>
           <a href="{% url 'projects' %}#servis">услуги</a>
           <a href="{% url 'price' %}">цены</a>
-          {% comment %} <a href="{% url 'reviews' %}">отзывы</a> {% endcomment %}
+          <a href="{% url 'reviews' %}">отзывы</a>
           <a href="{% url 'home' %}#contact">контакты</a>
           <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
           <a href="#" id="login-link">Войти</a>
@@ -141,9 +141,9 @@
           <a href="{% url 'home' %}#contact">
             <p style="margin: 11px 0;">контакты</p>
           </a>
-          {% comment %} <a href="{% url 'reviews' %}"> {% endcomment %}
+          <a href="{% url 'reviews' %}">
             <p>отзывы</p>
-          {% comment %} </a> {% endcomment %}
+          </a>
         </div>
         <div class="line"></div>
         <div class="right_menu">

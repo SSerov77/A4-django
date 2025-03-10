@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('projects/', include('projects.urls')),
     path('price/', include('price.urls')),
+    path('reviews/', include('reviews.urls')),
 ]
 
 if settings.MEDIA_ROOT:
