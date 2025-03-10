@@ -21,10 +21,10 @@
           </div>
         </a>
         <div class="menu">
-          {% comment %} <a href="{% url 'projects' %}">проекты</a>
+          <a href="{% url 'projects' %}">проекты</a>
           <a href="{% url 'projects' %}#servis">услуги</a>
-          <a href="{% url 'price' %}">цены</a>
-          <a href="{% url 'reviews' %}">отзывы</a> {% endcomment %}
+          {% comment %} <a href="{% url 'price' %}">цены</a> {% endcomment %}
+          {% comment %} <a href="{% url 'reviews' %}">отзывы</a> {% endcomment %}
           <a href="{% url 'home' %}#contact">контакты</a>
           <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
           <a href="#" id="login-link">Войти</a>
@@ -147,10 +147,10 @@
         </div>
         <div class="line"></div>
         <div class="right_menu">
-          {% comment %} <a href="{% url 'projects' %}"> {% endcomment %}
+          <a href="{% url 'projects' %}">
             <p>проекты</p>
           {% comment %} </a> {% endcomment %}
-          {% comment %} <a href="{% url 'projects' %}#servis"> {% endcomment %}
+          <a href="{% url 'projects' %}#servis">
             <p style="margin: 11px 0;">услуги</p>
           {% comment %} </a> {% endcomment %}
           {% comment %} <a href="{% url 'price' %}"> {% endcomment %}
