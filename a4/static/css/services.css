@@ -1,0 +1,241 @@
+button,
+a {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: Jura;
+    src: url(../font/Jura.ttf);
+}
+
+@font-face {
+    font-family: Orbitron;
+    src: url(../font/Orbitron.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    height: 100%;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.home_page {
+    background-color: black;
+    height: 100%;
+    font-family: Jura;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    color: black;
+    height: 100px;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
+    padding: 0 155px;
+}
+
+header a {
+    font-family: Jura;
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+header a:not(:last-child) {
+    margin-right: 60px;
+}
+
+.aplication_title_form span {
+    color: rgba(90, 16, 16, 0.97);
+}
+
+::placeholder {
+    font-size: 16px;
+    color: black;
+}
+
+
+.application_form button {
+    width: 195px;
+    height: 45px;
+    background-color: rgba(90, 16, 16, 0.97);
+    border-radius: 10px;
+    color: white;
+    font-family: Jura;
+    font-size: 16px;
+    margin: 24px auto;
+}
+
+footer {
+    font-family: Jura;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 165px;
+    height: 260px;
+    border-radius: 20px 20px 0 0;
+    background-color: white;
+    width: 100%;
+}
+
+footer .logo {
+    font-size: 24px;
+}
+
+.sub_menu {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+}
+
+.left_menu {
+    text-align: right;
+}
+
+.line-footer {
+    height: 190px;
+    border: 2px solid rgba(90, 16, 16, 0.97);
+    margin: 0 20px;
+}
+
+.wrapper {
+    background-color: black;
+}
+
+.main {
+    width: 100%;
+    height: 1450px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content {
+    margin-top: 125px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.title {
+    color: white;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.line {
+    margin-top: 29px;
+}
+
+.filters {
+    width: 700px;
+    display: flex;
+    gap: 49px;
+    margin-top: 95px;
+}
+
+.service-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 15px 36px 14px 36px;
+    background-color: #5A1010F7;
+}
+
+.service-title:hover {
+    margin: -1px;
+    border: 1px solid white;
+}
+
+.cards {
+    width: 1610px;
+    height: 815px;
+    background-color: white;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 65px;
+}
+
+.cards-content {
+    display: flex;
+    gap: 115px;
+}
+
+.card {
+    width: 369px;
+    height: 575px;
+    border: 3px solid #5A1010F7;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5A1010F7;
+    margin-top: 38px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 65px;
+    gap: 30px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-text {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.item-line {
+    height: 1px;
+    width: 205px;
+    background-color: #5A1010F7;
+}
+
+.submit-application {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 20px 32px 26px 32px;
+    background-color: #5A1010F7;
+}
+
+.submit-application:hover {
+    margin: -1px;
+    border: 1px solid white;
+}
