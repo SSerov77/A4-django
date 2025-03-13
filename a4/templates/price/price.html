@@ -1,125 +1,50 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/price.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <title>Цены</title>
-</head>
+{% block title %}Прайс-лист{% endblock %}
 
-<body>
-  <div class="wrapper">
-    <div class="home_page">
-      <header>
-        <a href="{% url 'home' %}">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="menu">
-          <a href="{% url 'projects' %}">проекты</a>
-          <a href="{% url 'services_brand' %}">услуги</a>
-          <a href="{% url 'price' %}">цены</a>
-          <a href="{% url 'reviews' %}">отзывы</a>
-          <a href="{% url 'home' %}#contact">контакты</a>
-          <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
-          <a href="#" id="login-link">Войти</a>
-          <span id="user-info" style="display: none;">
-            <span id="username"></span>
-            <a href="#" id="logout-link">Выйти</a>
-          </span>
-        </div>
-      </header>
-      <div class="content_home_page">
-        <p class="title_home_page">Цены</p>
-        <img src="{% static 'imgs/Group 11.jpg' %}" alt="" />
-        <div class="blocks_price">
-          <div class="block">
-            <div class="title_price">
-              <p>
-                Тариф <br />
-                “Базовый”
-              </p>
-            </div>
-            <p class="desc_block">- анализ целевой аудитории</p>
-            <p class="desc_block">- создание 1 рекламного объявления</p>
-            <p class="desc_block">
-              - настройка и запуск рекламной кампании в одной социальной сети
-            </p>
-            <p class="desc_block">- ежемесячный отчет о результатах</p>
-            <button><b>10 тычяч/мес</b></button>
-          </div>
-          <div class="block">
-            <div class="title_price">
-              <p>Тариф<br />“Стандартный”</p>
-            </div>
-            <p class="desc_block">- все услуги Базового тарифа</p>
-            <p class="desc_block">- создание до 3 рекламных объявлений</p>
-            <p class="desc_block">
-              - настройка и запуск кампании в двух социальных сетях
-            </p>
-            <p class="desc_block">- оптимизация кампаний раз в две недели</p>
-            <p class="desc_block">
-              - поддержка по электронной почте и телефону
-            </p>
-            <button><b>25 тычяч/мес</b></button>
-          </div>
-          <div class="block">
-            <div class="title_price">
-              <p>Тариф<br />“Премиум”</p>
-            </div>
-            <p class="desc_block">- все услуги Стандартного тарифа</p>
-            <p class="desc_block">
-              - создание до 5 рекламных объявлений с A/B тестированием
-            </p>
-            <p class="desc_block">- запуск кампании в трех</p>
-            <p class="desc_block">
-              - еженедельная оптимизация и консультации
-            </p>
-            <p class="desc_block">- поддержка через мессенджеры</p>
-            <button><b>35 тычяч/мес</b></button>
-          </div>
-        </div>
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/price.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="content_home_page">
+  <p class="title_home_page">Цены</p>
+  <img src="{% static 'imgs/Group 11.jpg' %}" alt="" />
+  <div class="blocks_price">
+    <div class="block">
+      <div class="title_price">
+        <p>Тариф <br />“Базовый”</p>
       </div>
+      <p class="desc_block">- анализ целевой аудитории</p>
+      <p class="desc_block">- создание 1 рекламного объявления</p>
+      <p class="desc_block">- настройка и запуск рекламной кампании в одной социальной сети</p>
+      <p class="desc_block">- ежемесячный отчет о результатах</p>
+      <button><b>10 тычяч/мес</b></button>
     </div>
-    <footer>
-      <a href="{% url 'home' %}">
-        <div class="logo">
-          <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-          <p class="text_logo">Рекламная<br />компания А4</p>
-        </div>
-      </a>
-      <div class="sub_menu">
-        <div class="left_menu">
-          <a href="{% url 'home' %}#about_comp">
-            <p>о компании</p>
-          </a>
-          <a href="{% url 'home' %}#contact">
-            <p style="margin: 11px 0;">контакты</p>
-          </a>
-          <a href="{% url 'reviews' %}">
-            <p>отзывы</p>
-          </a>
-        </div>
-        <div class="line"></div>
-        <div class="right_menu">
-          <a href="{% url 'projects' %}">
-            <p>проекты</p>
-          </a>
-          <a href="{% url 'services_brand' %}">
-            <p style="margin: 11px 0;">услуги</p>
-          </a>
-          <a href="{% url 'price' %}">
-            <p>цены</p>
-          </a>
-        </div>
+    <div class="block">
+      <div class="title_price">
+        <p>Тариф<br />“Стандартный”</p>
       </div>
-    </footer>
+      <p class="desc_block">- все услуги Базового тарифа</p>
+      <p class="desc_block">- создание до 3 рекламных объявлений</p>
+      <p class="desc_block">- настройка и запуск кампании в двух социальных сетях</p>
+      <p class="desc_block">- оптимизация кампаний раз в две недели</p>
+      <p class="desc_block">- поддержка по электронной почте и телефону</p>
+      <button><b>25 тычяч/мес</b></button>
+    </div>
+    <div class="block">
+      <div class="title_price">
+        <p>Тариф<br />“Премиум”</p>
+      </div>
+      <p class="desc_block">- все услуги Стандартного тарифа</p>
+      <p class="desc_block">- создание до 5 рекламных объявлений с A/B тестированием</p>
+      <p class="desc_block">- запуск кампании в трех</p>
+      <p class="desc_block">- еженедельная оптимизация и консультации</p>
+      <p class="desc_block">- поддержка через мессенджеры</p>
+      <button><b>35 тычяч/мес</b></button>
+    </div>
   </div>
-</body>
-
-</html>
+</div>
+</div>
+{% endblock %}
