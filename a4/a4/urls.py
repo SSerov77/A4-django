@@ -11,6 +11,7 @@ urlpatterns = [
     path('price/', include('price.urls')),
     path('reviews/', include('reviews.urls')),
     path('services/', include('services.urls')),
+    path('users/', include('users.urls')),
 ]
 
 if settings.MEDIA_ROOT:

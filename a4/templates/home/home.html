@@ -27,11 +27,7 @@
           <a href="{% url 'reviews' %}">отзывы</a>
           <a href="{% url 'home' %}#contact">контакты</a>
           <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
-          <a href="#" id="login-link">Войти</a>
-          <span id="user-info" style="display: none;">
-            <span id="username"></span>
-            <a href="#" id="logout-link">Выйти</a>
-          </span>
+          <a href="{% url 'login' %}" id="login-link">Войти</a>
         </div>
       </header>
       <div class="content_home_page" id="home_page">
@@ -160,42 +156,6 @@
       </div>
     </footer>
   </div>
-  <!-- Попап для авторизации и регистрации -->
-  <div id="auth-popup" class="auth-popup">
-    <div class="auth-popup-content">
-      <span class="auth-close-popup">&times;</span> <!-- Кнопка закрытия -->
-
-      <!-- Форма авторизации -->
-      <div id="auth-login-form" class="auth-form">
-        <h2 class="auth-form-title">Авторизация</h2>
-        <form id="auth-login" class="auth-form-container">
-          <input type="email" id="auth-login-email" class="auth-input" placeholder="Email" required>
-          <input type="password" id="auth-login-password" class="auth-input" placeholder="Пароль" required>
-          <button type="submit" class="auth-button">Войти</button>
-        </form>
-        <p class="auth-form-text">Нет аккаунта? <a href="#" id="auth-show-register"
-            class="auth-link">Зарегистрироваться</a></p>
-      </div>
-
-      <!-- Форма регистрации -->
-      <div id="auth-register-form" class="auth-form" style="display: none;">
-        <h2 class="auth-form-title">Регистрация</h2>
-        <form id="auth-register" class="auth-form-container">
-          <input type="text" id="auth-register-username" class="auth-input" placeholder="Имя пользователя" required>
-          <input type="email" id="auth-register-email" class="auth-input" placeholder="Email" required>
-          <input type="password" id="auth-register-password" class="auth-input" placeholder="Пароль" required>
-          <input type="password" id="auth-register-password-confirm" class="auth-input" placeholder="Повторите пароль"
-            required>
-          <div id="auth-register-error" class="auth-error-message" style="display: none;">Пароли не совпадают</div>
-          <button type="submit" class="auth-button">Зарегистрироваться</button>
-        </form>
-        <p class="auth-form-text">Есть аккаунт? <a href="#" id="auth-show-login" class="auth-link">Войти</a></p>
-      </div>
-    </div>
-  </div>
-  <script src="{% static 'js/main.js' %}"></script>
-  <script src="{% static 'js/auth.js' %}"></script>
-  <script src="{% static 'js/application.js' %}"></script>
 </body>
 
 </html>

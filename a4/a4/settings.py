@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'price.apps.PriceConfig',
     'reviews.apps.ReviewsConfig',
     'services.apps.ServicesConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
