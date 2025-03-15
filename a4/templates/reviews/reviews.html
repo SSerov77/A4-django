@@ -21,7 +21,11 @@
             <b>Оставьте отзыв о нашей компании! С благодарностью, <br><span>“Рекламная компания “А4”</span></b>
           </p>
           <textarea id="reviewText" name="text" class="review_input" placeholder="Напишите отзыв" required></textarea>
-          <button type="submit" class="auth-button">Отправить отзыв</button>
+          {% if user.is_authenticated %}
+            <button type="submit" class="auth-button">Отправить отзыв</button>
+          {% else %}
+            <p class="auth-message">Чтобы оставить отзыв, <a href="{% url 'login' %}">авторизуйтесь</a>.</p>
+          {% endif %}
         </form>
       </div>
     </div>
@@ -32,8 +36,9 @@
     <button class="submit" id="openReviewModal">Оставить отзыв</button>
     {% for review in reviews %}
     <div class="review-item">
+      <p class="review-author">{{ review.author }}</p>
       <p class="review-text">{{ review.text }}</p>
-      <p class="review-date">{{ review.created_at|date:"d.m.Y H:i" }}</p>
+      <p class="review-date">{{ review.created_at|date:"d.m.Y" }}</p>
     </div>
     {% endfor %}
   </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required  # Декоратор для проверки авторизации
 from .models import Review
 from .forms import ReviewForm
 
@@ -11,7 +12,9 @@ def reviews(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             print("Форма валидна. Сохранение отзыва в базу данных.")
-            form.save()
+            review = form.save(commit=False)
+            review.author = request.user  # Автоматически заполняем поле author
+            review.save()
             messages.success(request, 'Спасибо за ваш отзыв!')
             print("Отзыв успешно сохранён. Перенаправление на страницу отзывов.")
             return redirect('reviews')

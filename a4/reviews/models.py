@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User  # Импортируем модель пользователя
 
 class Review(models.Model):
     text = models.TextField(verbose_name="Текст отзыва")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Автор")  # Связь с пользователем
 
     def __str__(self):
-        return f"Отзыв от {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+        return f"Отзыв от {self.author.username} ({self.created_at.strftime('%d.%m.%Y')})"
 
     class Meta:
         verbose_name = "Отзыв"
