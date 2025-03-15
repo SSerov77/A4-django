@@ -10,14 +10,6 @@
 {% block content %}
 <div class="content_home_page">
   <p class="title_home_page">Отзывы</p>
-
-  <!-- Кнопка для открытия модального окна -->
-  <div class="block_reviews" id="reviewsContainer">
-    <div class="reviews btn">
-      <button class="submit" id="openReviewModal">Оставить отзыв</button>
-    </div>
-  </div>
-
   <!-- Модальное окно -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
@@ -37,6 +29,7 @@
 
   <!-- Список отзывов -->
   <div class="reviews-list">
+    <button class="submit" id="openReviewModal">Оставить отзыв</button>
     {% for review in reviews %}
     <div class="review-item">
       <p class="review-text">{{ review.text }}</p>
