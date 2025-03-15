@@ -19,20 +19,3 @@ window.addEventListener("click", function (event) {
         modal.style.display = "none";
     }
 });
-
-// Обработка отправки формы
-const reviewForm = document.getElementById("reviewForm");
-reviewForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Предотвращаем отправку формы
-
-    const reviewText = document.getElementById("reviewText").value;
-
-    // Здесь можно добавить логику для отправки отзыва на сервер
-    console.log("Отзыв отправлен:", reviewText);
-
-    // Закрываем модальное окно после отправки
-    modal.style.display = "none";
-
-    // Очищаем поле ввода
-    document.getElementById("reviewText").value = "";
-});
