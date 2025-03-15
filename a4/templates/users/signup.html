@@ -1,102 +1,41 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Регистрация{% endblock %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <title>Регистрация</title>
-</head>
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
 
-<body>
-  <div class="wrapper">
-    <div class="home_page">
-      <header>
-        <a href="{% url 'home' %}">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="menu">
-          <a href="{% url 'projects' %}">проекты</a>
-          <a href="{% url 'services_brand' %}">услуги</a>
-          <a href="{% url 'price' %}">цены</a>
-          <a href="{% url 'reviews' %}">отзывы</a>
-          <a href="{% url 'home' %}#contact">контакты</a>
-          <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
-          <a href="#" id="login-link">Войти</a>
-          <span id="user-info" style="display: none;">
-            <span id="username"></span>
-            <a href="#" id="logout-link">Выйти</a>
-          </span>
-        </div>
-      </header>
-      <main class="main">
-        <div class="form-container">
-            <div class="form-title">Регистрация</div>
-            <form class="form" method="post">
-              {% csrf_token %}
-              {{ form.non_field_errors }}
-    
-              {{ form.username.errors }}
-              {{ form.username }}
+{% block content %}
+<main class="main">
+  <div class="form-container">
+    <div class="form-title">Регистрация</div>
+    <form class="form" method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
 
-              {{ form.first_name.errors }}
-              {{ form.first_name }}
-    
-              {{ form.last_name.errors }}
-              {{ form.last_name }}
-    
-              {{ form.email.errors }}
-              {{ form.email }}
-    
-              {{ form.password1.errors }}
-              {{ form.password1 }}
-    
-              {{ form.password2.errors }}
-              {{ form.password2 }}
-    
-              <button type="submit" class="submit-button">Зарегистрироваться</button>
-              <a href="{% url 'login' %}" class="link-login">Уже есть аккаунт?</a>
-            </form>
-          </div>
-      </main>
-      <footer>
-        <a href="#home_page">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="sub_menu">
-          <div class="left_menu">
-            <a href="{% url 'home' %}#about_comp">
-              <p>о компании</p>
-            </a>
-            <a href="{% url 'home' %}#contact">
-              <p style="margin: 11px 0;">контакты</p>
-            </a>
-            <a href="{% url 'reviews' %}">
-              <p>отзывы</p>
-            </a>
-          </div>
-          <div class="line-footer"></div>
-          <div class="right_menu">
-            <a href="{% url 'projects' %}">
-              <p>проекты</p>
-            </a>
-            <a href="{% url 'services_brand' %}">
-              <p style="margin: 11px 0;">услуги</p>
-            </a>
-            <a href="{% url 'price' %}">
-              <p>цены</p>
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
-</body>
+      {{ form.username.errors }}
+      {{ form.username }}
+
+      {{ form.first_name.errors }}
+      {{ form.first_name }}
+
+      {{ form.last_name.errors }}
+      {{ form.last_name }}
+
+      {{ form.email.errors }}
+      {{ form.email }}
+
+      {{ form.password1.errors }}
+      {{ form.password1 }}
+
+      {{ form.password2.errors }}
+      {{ form.password2 }}
+
+      <button type="submit" class="submit-button">Зарегистрироваться</button>
+      <a href="{% url 'login' %}" class="link-login">Уже есть аккаунт?</a>
+    </form>
+  </div>
+</main>
+{% endblock %}
