@@ -1,144 +1,81 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Услуги | Брендинг{% endblock %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/services.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <title>Услуги | Брендинг</title>
-</head>
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
 
-<body>
-  <div class="wrapper">
-    <div class="home_page">
-      <header>
-        <a href="{% url 'home' %}">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="menu">
-          <a href="{% url 'projects' %}">проекты</a>
-          <a href="{% url 'services_brand' %}">услуги</a>
-          <a href="{% url 'price' %}">цены</a>
-          <a href="{% url 'reviews' %}">отзывы</a>
-          <a href="{% url 'home' %}#contact">контакты</a>
-          <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
-          <a href="#" id="login-link">Войти</a>
-          <span id="user-info" style="display: none;">
-            <span id="username"></span>
-            <a href="#" id="logout-link">Выйти</a>
-          </span>
-        </div>
-      </header>
-      <main class="main">
-        <div class="main-content">
-          <h1 class="title">Услуги</h1>
-          <img src="{% static 'imgs/Group 11.jpg' %}" alt="" class="line">
-          <div class="filters">
-            <a href="{% url 'services_brand' %}" class="service-title">Брендинг</a>
-            <a href="{% url 'services_prod' %}" class="service-title">Производство</a>
-            <a href="{% url 'services_install' %}" class="service-title">Установка</a>
-          </div>
-        </div>
-        <div class="cards">
-          <div class="cards-content">
-            <div class="card">
-              <img src="{% static 'imgs/1.png' %}" class="card-img">
-              <p class="card-title">Разработка фирменного стиля </p>
-              <div class="card-info">
-                <div class="item">
-                  <p class="item-text">создание логотипов от 30 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">подбор цветовых палитр от 15 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">брендирование мероприятий от 20 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <img src="{% static 'imgs/2.png' %}" alt="" class="card-img">
-              <p class="card-title">Маркетинговые исследования</p>
-              <div class="card-info">
-                <div class="item">
-                  <p class="item-text">анализ конкурентов бренда от 10 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">анализ целевой аудитории от 15 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">анализ тенденций рынка от 12 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <img src="{% static 'imgs/3.png' %}" alt="" class="card-img">
-              <p class="card-title">Разработка кампаний</p>
-              <div class="card-info">
-                <div class="item">
-                  <p class="item-text">создание рекламных стратегий от 30 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">консультации по брендингу от 15 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-                <div class="item">
-                  <p class="item-text">разработка слоганов от 20 тыс.</p>
-                  <div class="item-line"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="#" class="submit-application">Подать заявку</a>
-      </main>
-      <footer>
-        <a href="#home_page">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="sub_menu">
-          <div class="left_menu">
-            <a href="{% url 'home' %}#about_comp">
-              <p>о компании</p>
-            </a>
-            <a href="{% url 'home' %}#contact">
-              <p style="margin: 11px 0;">контакты</p>
-            </a>
-            <a href="{% url 'reviews' %}">
-              <p>отзывы</p>
-            </a>
-          </div>
-          <div class="line-footer"></div>
-          <div class="right_menu">
-            <a href="{% url 'projects' %}">
-              <p>проекты</p>
-            </a>
-            <a href="{% url 'services_brand' %}">
-              <p style="margin: 11px 0;">услуги</p>
-            </a>
-            <a href="{% url 'price' %}">
-              <p>цены</p>
-            </a>
-          </div>
-        </div>
-      </footer>
+{% block content %}
+<main class="main">
+  <div class="main-content">
+    <h1 class="title">Услуги</h1>
+    <img src="{% static 'imgs/Group 11.jpg' %}" alt="" class="line-img">
+    <div class="filters">
+      <a href="{% url 'services_brand' %}" class="service-title">Брендинг</a>
+      <a href="{% url 'services_prod' %}" class="service-title">Производство</a>
+      <a href="{% url 'services_install' %}" class="service-title">Установка</a>
     </div>
-</body>
-
-</html>
+  </div>
+  <div class="cards">
+    <div class="cards-content">
+      <div class="card">
+        <img src="{% static 'imgs/1.png' %}" class="card-img">
+        <p class="card-title">Разработка фирменного стиля </p>
+        <div class="card-info">
+          <div class="item">
+            <p class="item-text">создание логотипов от 30 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">подбор цветовых палитр от 15 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">брендирование мероприятий от 20 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{% static 'imgs/2.png' %}" alt="" class="card-img">
+        <p class="card-title">Маркетинговые исследования</p>
+        <div class="card-info">
+          <div class="item">
+            <p class="item-text">анализ конкурентов бренда от 10 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">анализ целевой аудитории от 15 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">анализ тенденций рынка от 12 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{% static 'imgs/3.png' %}" alt="" class="card-img">
+        <p class="card-title">Разработка кампаний</p>
+        <div class="card-info">
+          <div class="item">
+            <p class="item-text">создание рекламных стратегий от 30 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">консультации по брендингу от 15 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+          <div class="item">
+            <p class="item-text">разработка слоганов от 20 тыс.</p>
+            <div class="item-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="submit-application">Подать заявку</a>
+</main>
+{% endblock %}
