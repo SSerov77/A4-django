@@ -1,99 +1,37 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/projects.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-  <title>Проекты</title>
-</head>
+{% block title %}Наши проекты{% endblock %}
 
-<body>
-  <div class="wrapper">
-    <div class="home_page">
-      <header>
-        <a href="{% url 'home' %}">
-          <div class="logo">
-            <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-            <p class="text_logo">Рекламная<br />компания А4</p>
-          </div>
-        </a>
-        <div class="menu">
-          <a href="{% url 'projects' %}">проекты</a>
-          <a href="{% url 'services_brand' %}">услуги</a>
-          <a href="{% url 'price' %}">цены</a>
-          <a href="{% url 'reviews' %}">отзывы</a>
-          <a href="{% url 'home' %}#contact">контакты</a>
-          <img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
-          <a href="#" id="login-link">Войти</a>
-          <span id="user-info" style="display: none;">
-            <span id="username"></span>
-            <a href="#" id="logout-link">Выйти</a>
-          </span>
-        </div>
-      </header>
-      <div class="content_home_page">
-        <p class="title_home_page">Проекты</p>
-        <img src="{% static 'imgs/Group 11.jpg' %}" alt="" />
-      </div>
-      <div class="slider">
-        <img src="{% static 'imgs/Group 37.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 38.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 40.jpg' %}" alt="" />
-        <img src="{% static 'imgs/Group 41.jpg' %}" alt="" />
-      </div>
-    </div>
-    <div class="services_page">
-      <p class="title_services_page" id="servis">Услуги</p>
-      <div class="block_content">
-        <div class="line"></div>
-        <div class="text_content">
-          <p>разработка дизайна</p>
-          <p>работа с согласованием вывесок</p>
-          <p>ремонт вывесок</p>
-          <p>работа промышленных альпинистов</p>
-          <p>монтаж</p>
-        </div>
-        <img class="poz" src="{% static 'imgs/1271.jpg' %}" alt="" />
-        <img class="poz1" src="{% static 'imgs/logo-design.jpg' %}" alt="" />
-      </div>
-    </div>
-    <footer>
-      <a href="{% url 'home' %}">
-        <div class="logo">
-          <img src="{% static 'imgs/Group 41.svg' %}" alt="" />
-          <p class="text_logo">Рекламная<br />компания А4</p>
-        </div>
-      </a>
-      <div class="sub_menu">
-        <div class="left_menu">
-          <a href="{% url 'home' %}#about_comp">
-            <p>о компании</p>
-          </a>
-          <a href="{% url 'home' %}#contact">
-            <p style="margin: 11px 0;">контакты</p>
-          </a>
-          <a href="{% url 'reviews' %}">
-            <p>отзывы</p>
-          </a>
-        </div>
-        <div class="line"></div>
-        <div class="right_menu">
-          <a href="{% url 'projects' %}">
-            <p>проекты</p>
-          </a>
-          <a href="{% url 'services_brand' %}">
-            <p style="margin: 11px 0;">услуги</p>
-          </a>
-          <a href="{% url 'price' %}">
-            <p>цены</p>
-          </a>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
 
-</html>
+{% block content %}
+<div class="content_home_page">
+	<p class="title_home_page">Проекты</p>
+	<img src="{% static 'imgs/Group 11.jpg' %}" alt="" />
+</div>
+<div class="slider">
+	<img src="{% static 'imgs/Group 37.jpg' %}" alt="" />
+	<img src="{% static 'imgs/Group 38.jpg' %}" alt="" />
+	<img src="{% static 'imgs/Group 40.jpg' %}" alt="" />
+	<img src="{% static 'imgs/Group 41.jpg' %}" alt="" />
+</div>
+</div>
+<div class="services_page">
+	<p class="title_services_page" id="servis">Услуги</p>
+	<div class="block_content">
+		<div class="line"></div>
+		<div class="text_content">
+			<p>разработка дизайна</p>
+			<p>работа с согласованием вывесок</p>
+			<p>ремонт вывесок</p>
+			<p>работа промышленных альпинистов</p>
+			<p>монтаж</p>
+		</div>
+		<img class="poz" src="{% static 'imgs/1271.jpg' %}" alt="" />
+		<img class="poz1" src="{% static 'imgs/logo-design.jpg' %}" alt="" />
+	</div>
+</div>
+{% endblock %}
