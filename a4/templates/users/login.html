@@ -15,11 +15,11 @@
 			{% csrf_token %}
 			{{ form.non_field_errors }}
 
-			{{ form.username.errors }}
 			{{ form.username }}
+			{{ form.username.errors }}
 
-			{{ form.password.errors }}
 			{{ form.password }}
+			{{ form.password.errors }}
 			<button type="submit" class="submit-button">Войти</button>
 			<a href="{% url 'signup' %}" class="link-signup">Нет аккаунта?</a>
 		</form>
