@@ -9,6 +9,16 @@
 
 
 {% block content %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <div class="content_home_page" id="home_page">
 	<div class="text_content">
 		<p class="title_home_page">
@@ -78,10 +88,11 @@
 					src="https://yandex.ru/map-widget/v1/?ll=55.135061%2C51.799406&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTkyNTg1Mzc5EkLQoNC-0YHRgdC40Y8sINCe0YDQtdC90LHRg9GA0LMsINC_0YDQvtGB0L_QtdC60YIg0J_QvtCx0LXQtNGLLCAxNDIiCg1NilxCFZcyT0I%2C&z=16.59"
 					width="490" height="400" frameborder="1" allowfullscreen="true" style="position: relative"></iframe>
 			</div>
-			<form id="applicationForm" class="application_form">
+			<form id="applicationForm" class="application_form" method="post" action="{% url 'home' %}">
+				{% csrf_token %}
 				<p class="aplication_title_form"><b>Оставьте заявку на <span>бесплатный</span> замер!</b></p>
-				<input class="aplication_form_input" type="text" id="name" placeholder="Ваше имя" required>
-				<input class="aplication_form_input" type="email" id="email" placeholder="Ваш email" required>
+				<input class="aplication_form_input" type="text" name="name" id="name" placeholder="Ваше имя" required>
+				<input class="aplication_form_input" type="email" name="email" id="email" placeholder="Ваш email" required>
 				<button type="submit">Отправить</button>
 			</form>
 		</div>
