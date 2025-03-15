@@ -12,11 +12,14 @@
   <p class="title_home_page">Отзывы</p>
   <div class="block_reviews" id="reviewsContainer">
     <div class="reviews btn">
-      <button class="submit" id="myBtn">Оставить отзыв</button>
+      <button class="submit" id="openReviewModal">Оставить отзыв</button>
     </div>
   </div>
+
+  <!-- Модальное окно -->
   <div id="reviewModal" class="modal">
     <div class="modal-content">
+      <span class="close">&times;</span>
       <div class="modal-body">
         <form id="reviewForm" class="review_form">
           <p class="review_title_form">
@@ -29,4 +32,7 @@
     </div>
   </div>
 </div>
+
+<!-- Скрипт для управления модальным окном -->
+<script src="{% static 'js/reviews.js' %}"></script>
 {% endblock %}
