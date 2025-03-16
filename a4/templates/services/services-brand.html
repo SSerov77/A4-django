@@ -76,6 +76,101 @@
       </div>
     </div>
   </div>
-  <a href="#" class="submit-application">Подать заявку</a>
+  <button id="openModal" class="submit-application">Подать заявку</button>
 </main>
+
+<!-- Модальное окно -->
+<div id="applicationModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="modal-body">
+      <form id="applicationForm" class="application_form" method="post" action="{% url 'services_brand' %}">
+        {% csrf_token %}
+        <p class="application_title_form">
+          <b>Оставьте заявку на услугу!</b>
+        </p>
+
+        <!-- Выбор услуги -->
+        <label for="service">Вид услуги:</label>
+        <select id="service" name="service" class="form-control" required>
+          <option value="">Выберите услугу</option>
+          <option value="branding">Разработка фирменного стиля</option>
+          <option value="production">Маркетинговые исследования</option>
+          <option value="installation">Разработка кампаний</option>
+        </select>
+
+        <!-- Выбор подуслуги -->
+        <label for="sub_service">Подуслуга:</label>
+        <select id="sub_service" name="sub_service" class="form-control" required>
+          <option value="">Выберите подуслугу</option>
+        </select>
+
+        <!-- Описание заказа -->
+        <textarea id="applicationText" name="description" class="application_input" placeholder="Опишите ваш заказ" required></textarea>
+
+        <button type="submit" class="auth-button">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Скрипт для управления модальным окном и выпадающими списками -->
+<script>
+  // Данные для подуслуг
+  const subServices = {
+    branding: [
+      { value: 'logo', text: 'Создание логотипа' },
+      { value: 'colors', text: 'Подбор цветовых палитр' },
+      { value: 'events', text: 'Брендирование мероприятий' },
+    ],
+    production: [
+      { value: 'competitors', text: 'Анализ конкурентов' },
+      { value: 'audience', text: 'Анализ целевой аудитории' },
+      { value: 'trends', text: 'Анализ тенденций рынка' },
+    ],
+    installation: [
+      { value: 'strategies', text: 'Создание рекламных стратегий' },
+      { value: 'consulting', text: 'Консультации по брендингу' },
+      { value: 'slogans', text: 'Разработка слоганов' },
+    ],
+  };
+
+  // Получаем элементы DOM
+  const serviceSelect = document.getElementById('service');
+  const subServiceSelect = document.getElementById('sub_service');
+
+  // Обновляем подуслуги при изменении услуги
+  serviceSelect.addEventListener('change', function () {
+    const selectedService = this.value;
+    subServiceSelect.innerHTML = '<option value="">Выберите подуслугу</option>';
+
+    if (selectedService && subServices[selectedService]) {
+      subServices[selectedService].forEach(subService => {
+        const option = document.createElement('option');
+        option.value = subService.value;
+        option.text = subService.text;
+        subServiceSelect.appendChild(option);
+      });
+    }
+  });
+
+  // Управление модальным окном
+  const modal = document.getElementById("applicationModal");
+  const openModalBtn = document.getElementById("openModal");
+  const closeModalBtn = document.querySelector(".close");
+
+  openModalBtn.addEventListener("click", function () {
+    modal.style.display = "block";
+  });
+
+  closeModalBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
 {% endblock %}

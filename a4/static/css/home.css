@@ -36,6 +36,11 @@
     border: none;
 }
 
+.text_content button:hover {
+    margin: -1px;
+    border: 1px solid white;
+}
+
 .about_page {
     font-family: Jura;
     display: flex;
@@ -72,7 +77,6 @@
     font-family: Orbitron;
     font-size: 60px;
     color: rgba(90, 16, 16, 0.97);
-
 }
 
 /* **************************************** */
@@ -185,4 +189,11 @@ section {
     font-family: Jura;
     font-size: 16px;
     margin: 24px auto;
+}
+
+.application_form button:hover {
+    transition: .3s;
+    background-color: transparent;
+    border: 1px solid rgba(90, 16, 16, 0.97);
+    color: rgba(90, 16, 16, 0.97);
 }
