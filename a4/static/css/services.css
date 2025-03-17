@@ -164,13 +164,14 @@
 .application_form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .application_title_form {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    margin-left: 18%;
 }
 
 .application_input {
@@ -193,8 +194,23 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 30%;
 }
 
 .auth-button:hover {
     background-color: #7a2020;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.auth-message {
+    margin-left: 20%;
 }

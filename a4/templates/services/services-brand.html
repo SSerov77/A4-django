@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <!-- Карточка для ">Разработка кампаний" -->
+      <!-- Карточка для "Разработка кампаний" -->
       <div class="card">
         <img src="{% static 'imgs/3.png' %}" alt="" class="card-img">
         <p class="card-title">Разработка кампаний</p>
@@ -106,7 +106,7 @@
           <option value="Консультации по брендингу">Консультации по брендингу</option>
           <option value="Разработка слоганов">Разработка слоганов</option>
         </select>
-        <textarea id="applicationText" name="description" class="application_input" placeholder="Опишите ваш заказ" required></textarea>
+        <textarea id="applicationText" name="description" class="application_input" placeholder="Опишите ваш заказ"></textarea>
 
         {% if user.is_authenticated %}
           <button type="submit" class="auth-button">Отправить заявку</button>

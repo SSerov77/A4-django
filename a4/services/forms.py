@@ -15,7 +15,6 @@ class OrderForm(forms.ModelForm):
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Опишите ваш заказ',
-                'required': True,
+                'placeholder': 'Опишите ваш заказ'
             }),
         }

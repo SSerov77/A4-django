@@ -20,7 +20,7 @@ class Order(models.Model):
         verbose_name="Пользователь"
     )
     service = models.CharField(max_length=255, verbose_name="Услуга")
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(null=True, blank=True, verbose_name="Описание")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата начала")
     price = models.DecimalField(
         max_digits=10,
