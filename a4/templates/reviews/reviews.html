@@ -11,7 +11,7 @@
 <div class="content_home_page">
   <p class="title_home_page">Отзывы</p>
   <!-- Модальное окно -->
-  <div id="reviewModal" class="modal">
+  <div id="ModalWindow" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <div class="modal-body">
@@ -33,7 +33,7 @@
 
   <!-- Список отзывов -->
   <div class="reviews-list">
-    <button class="submit" id="openReviewModal">Оставить отзыв</button>
+    <button class="submit" id="openModalWindow">Оставить отзыв</button>
     {% for review in reviews %}
     <div class="review-item">
       <p class="review-author">{{ review.author }}</p>
@@ -43,7 +43,5 @@
     {% endfor %}
   </div>
 </div>
-
-<!-- Скрипт для управления модальным окном -->
-<script src="{% static 'js/reviews.js' %}"></script>
+<script src="{% static 'js/openModal.js' %}"></script>
 {% endblock %}
