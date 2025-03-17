@@ -1,19 +1,14 @@
 from django import forms
-from .models import OrderRequest
+from services.models import Order
 
-class OrderRequestForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
-        model = OrderRequest
-        fields = ['service', 'sub_service', 'description']
+        model = Order
+        fields = ['service', 'description']
         widgets = {
             'service': forms.Select(attrs={
                 'class': 'form-control',
                 'id': 'service',
-                'required': True,
-            }),
-            'sub_service': forms.Select(attrs={
-                'class': 'form-control',
-                'id': 'sub_service',
                 'required': True,
             }),
             'description': forms.Textarea(attrs={

@@ -22,18 +22,18 @@
     <div class="cards-content">
       <div class="card">
         <img src="{% static 'imgs/1.png' %}" class="card-img">
-        <p class="card-title">Разработка фирменного стиля </p>
+        <p class="card-title">Разработка фирменного стиля</p>
         <div class="card-info">
           <div class="item">
-            <p class="item-text">создание логотипов от 30 тыс.</p>
+            <p class="item-text">Создание логотипов от 30 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">подбор цветовых палитр от 15 тыс.</p>
+            <p class="item-text">Подбор цветовых палитр от 15 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">брендирование мероприятий от 20 тыс.</p>
+            <p class="item-text">Брендирование мероприятий от 20 тыс.</p>
             <div class="item-line"></div>
           </div>
         </div>
@@ -43,15 +43,15 @@
         <p class="card-title">Маркетинговые исследования</p>
         <div class="card-info">
           <div class="item">
-            <p class="item-text">анализ конкурентов бренда от 10 тыс.</p>
+            <p class="item-text">Анализ конкурентов бренда от 10 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">анализ целевой аудитории от 15 тыс.</p>
+            <p class="item-text">Анализ целевой аудитории от 15 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">анализ тенденций рынка от 12 тыс.</p>
+            <p class="item-text">Анализ тенденций рынка от 12 тыс.</p>
             <div class="item-line"></div>
           </div>
         </div>
@@ -61,26 +61,26 @@
         <p class="card-title">Разработка кампаний</p>
         <div class="card-info">
           <div class="item">
-            <p class="item-text">создание рекламных стратегий от 30 тыс.</p>
+            <p class="item-text">Создание рекламных стратегий от 30 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">консультации по брендингу от 15 тыс.</p>
+            <p class="item-text">Консультации по брендингу от 15 тыс.</p>
             <div class="item-line"></div>
           </div>
           <div class="item">
-            <p class="item-text">разработка слоганов от 20 тыс.</p>
+            <p class="item-text">Разработка слоганов от 20 тыс.</p>
             <div class="item-line"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <button id="openModal" class="submit-application">Подать заявку</button>
+  <button id="openModalWindow" class="submit-application">Подать заявку</button>
 </main>
 
 <!-- Модальное окно -->
-<div id="applicationModal" class="modal" style="display: none;">
+<div id="ModalWindow" class="modal" style="display: none;">
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="modal-body">
@@ -89,88 +89,30 @@
         <p class="application_title_form">
           <b>Оставьте заявку на услугу!</b>
         </p>
-
-        <!-- Выбор услуги -->
-        <label for="service">Вид услуги:</label>
+        <label for="service">Услуга:</label>
         <select id="service" name="service" class="form-control" required>
           <option value="">Выберите услугу</option>
-          <option value="branding">Разработка фирменного стиля</option>
-          <option value="production">Маркетинговые исследования</option>
-          <option value="installation">Разработка кампаний</option>
+          <option value="Создание логотипа">Создание логотипа</option>
+          <option value="Подбор цветовых палитр">Подбор цветовых палитр</option>
+          <option value="Брендирование мероприятий">Брендирование мероприятий</option>
+          <option value="Анализ конкурентов бренда">Анализ конкурентов бренда</option>
+          <option value="Анализ целевой аудитории">Анализ целевой аудитории</option>
+          <option value="Анализ тенденций рынка">Анализ тенденций рынка</option>
+          <option value="Создание рекламных стратегий">Создание рекламных стратегий</option>
+          <option value="Консультации по брендингу">Консультации по брендингу</option>
+          <option value="Разработка слоганов">Разработка слоганов</option>
         </select>
-
-        <!-- Выбор подуслуги -->
-        <label for="sub_service">Подуслуга:</label>
-        <select id="sub_service" name="sub_service" class="form-control" required>
-          <option value="">Выберите подуслугу</option>
-        </select>
-
-        <!-- Описание заказа -->
         <textarea id="applicationText" name="description" class="application_input" placeholder="Опишите ваш заказ" required></textarea>
 
-        <button type="submit" class="auth-button">Отправить заявку</button>
+        {% if user.is_authenticated %}
+          <button type="submit" class="auth-button">Отправить заявку</button>
+        {% else %}
+          <p class="auth-message">Чтобы оставить заявку, <a href="{% url 'login' %}">авторизуйтесь</a>.</p>
+        {% endif %}
       </form>
     </div>
   </div>
 </div>
 
-<!-- Скрипт для управления модальным окном и выпадающими списками -->
-<script>
-  // Данные для подуслуг
-  const subServices = {
-    branding: [
-      { value: 'logo', text: 'Создание логотипа' },
-      { value: 'colors', text: 'Подбор цветовых палитр' },
-      { value: 'events', text: 'Брендирование мероприятий' },
-    ],
-    production: [
-      { value: 'competitors', text: 'Анализ конкурентов' },
-      { value: 'audience', text: 'Анализ целевой аудитории' },
-      { value: 'trends', text: 'Анализ тенденций рынка' },
-    ],
-    installation: [
-      { value: 'strategies', text: 'Создание рекламных стратегий' },
-      { value: 'consulting', text: 'Консультации по брендингу' },
-      { value: 'slogans', text: 'Разработка слоганов' },
-    ],
-  };
-
-  // Получаем элементы DOM
-  const serviceSelect = document.getElementById('service');
-  const subServiceSelect = document.getElementById('sub_service');
-
-  // Обновляем подуслуги при изменении услуги
-  serviceSelect.addEventListener('change', function () {
-    const selectedService = this.value;
-    subServiceSelect.innerHTML = '<option value="">Выберите подуслугу</option>';
-
-    if (selectedService && subServices[selectedService]) {
-      subServices[selectedService].forEach(subService => {
-        const option = document.createElement('option');
-        option.value = subService.value;
-        option.text = subService.text;
-        subServiceSelect.appendChild(option);
-      });
-    }
-  });
-
-  // Управление модальным окном
-  const modal = document.getElementById("applicationModal");
-  const openModalBtn = document.getElementById("openModal");
-  const closeModalBtn = document.querySelector(".close");
-
-  openModalBtn.addEventListener("click", function () {
-    modal.style.display = "block";
-  });
-
-  closeModalBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-</script>
+<script src="{% static 'js/openModal.js' %}"></script>
 {% endblock %}
