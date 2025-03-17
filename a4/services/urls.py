@@ -1,5 +1,7 @@
 from django.urls import path
+
 from services import views
+
 
 urlpatterns = [
     path('branding/', views.services_brand, name='services_brand'),  # Страница с Брендингом

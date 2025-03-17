@@ -6,10 +6,9 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'user',
         'service',
-        'price',
         'status',
         'completion_date',
-        'is_completed'
+        'is_completed',
     )
     list_filter = ('status', 'is_completed')
     search_fields = ('user__username', 'service')

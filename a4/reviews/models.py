@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User  # Импортируем модель пользователя
+from django.contrib.auth.models import User
+
 
 class Review(models.Model):
     text = models.TextField(verbose_name="Текст отзыва")

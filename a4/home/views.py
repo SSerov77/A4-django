@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ApplicationForm
+
+from home.forms import ApplicationForm
+
 
 def home(request):
     if request.method == 'POST':

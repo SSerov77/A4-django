@@ -12,7 +12,7 @@ def services_brand(request):
                 order.user = request.user
                 order.save()
                 messages.success(request, 'Ваша заявка успешно отправлена!')
-                return redirect('services_install')
+                return redirect('services_brand')
             else:
                 messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
@@ -33,7 +33,7 @@ def services_prod(request):
                 order.user = request.user
                 order.save()
                 messages.success(request, 'Ваша заявка успешно отправлена!')
-                return redirect('services_install')
+                return redirect('services_prod')
             else:
                 messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:

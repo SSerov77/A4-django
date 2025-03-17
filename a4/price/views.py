@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'price/price.html') # Страница с прайс-листом
+def price(request):
+    return render(request, 'price/price.html')
