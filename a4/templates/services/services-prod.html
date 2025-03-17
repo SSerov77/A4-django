@@ -93,7 +93,6 @@
           <b>Оставьте заявку на услугу!</b>
         </p>
 
-        <!-- Выбор подуслуги (сохраняется в БД) -->
         <label for="service">Услуга:</label>
         <select id="service" name="service" class="form-control" required>
           <option value="">Выберите услугу</option>
@@ -107,8 +106,6 @@
           <option value="Баннеры и указатели">Баннеры и указатели</option>
           <option value="Сенсорные экраны">Сенсорные экраны</option>
         </select>
-
-        <!-- Описание заказа -->
         <textarea id="applicationText" name="description" class="application_input" placeholder="Опишите ваш заказ" required></textarea>
 
         {% if user.is_authenticated %}
