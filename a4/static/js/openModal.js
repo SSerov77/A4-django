@@ -1,6 +1,6 @@
 // Получаем элементы DOM
-const modal = document.getElementById("reviewModal");
-const openModalBtn = document.getElementById("openReviewModal");
+const modal = document.getElementById("ModalWindow");
+const openModalBtn = document.getElementById("openModalWindow");
 const closeModalBtn = document.querySelector(".close");
 
 // Открываем модальное окно
