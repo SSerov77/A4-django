@@ -15,12 +15,7 @@
 		<img src="{% static 'imgs/user-logo.svg' %}" alt="user-logo" class="user-logo">
 
 		{% if user.is_authenticated %}
-			<form action="{% url 'logout' %}" method="post" style="display: inline;">
-				{% csrf_token %}
-				<button type="submit" id="login-link" style="background: none; border: none; color: inherit; cursor: pointer;">
-				{{ user.username }}
-				</button>
-			</form>
+			<a href="{% url 'profile' %}" id="login-link">{{ user.username }}</a>
 		{% else %}
 			<a href="{% url 'login' %}" id="login-link">Войти</a>
 		{% endif %}
