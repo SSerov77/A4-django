@@ -1,5 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    AuthenticationForm,
+    PasswordChangeForm
+)
 from django.contrib.auth.models import User
 
 
@@ -55,3 +59,11 @@ class CustomAuthenticationForm(AuthenticationForm):
         for _, field in self.fields.items():
             field.widget.attrs['class'] = 'input'
             field.widget.attrs['placeholder'] = field.label
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].widget.attrs.update({'placeholder': 'Старый пароль'})
+        self.fields['new_password1'].widget.attrs.update({'placeholder': 'Новый пароль'})
+        self.fields['new_password2'].widget.attrs.update({'placeholder': 'Подтвердите новый пароль'})
