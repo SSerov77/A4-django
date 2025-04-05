@@ -7,8 +7,7 @@
     font-family: Jura;
 }
 
-.title_home_page,
-.title_services_page {
+.title_home_page {
     color: white;
     font-size: 36px;
     text-align: center;
@@ -47,13 +46,15 @@
 }
 
 .slider .slick-arrow.slick-next {
-    right: 0; /* Кнопка "вперед" должна быть справа */
+    right: 0;
+    /* Кнопка "вперед" должна быть справа */
     background: url('../imgs/Polygon_2.svg') 0 0 / 100% no-repeat;
     border: none;
 }
 
 .slider .slick-arrow.slick-prev {
-    left: 0; /* Кнопка "назад" должна быть слева */
+    left: 0;
+    /* Кнопка "назад" должна быть слева */
     background: url('../imgs/Polygon_1.svg') 0 0 / 100% no-repeat;
     border: none;
 }
@@ -72,41 +73,8 @@
     font-family: Jura;
     padding-bottom: 158px;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
-    }
-.block_content {
-    background-color: #5A1010F7;
-    height: 530px;
-    margin-top: 76px;
-    display: flex;
-    align-items: center;
-    padding: 81px 225px;
-    position: relative;
-}
-.poz{
-position: absolute;
-right: 425px;
-}
-.poz1{
-    position: absolute;
-    right: 152px;
-    top: 190px;
-    }
-.text_content {
-    color: white;
-    font-family: Jura;
-    font-size: 32px;
-}
-
-.text_content p:not(:last-child) {
-    margin-bottom: 27px;
-}
-
-.block_content .line {
-    height: 384px;
-    margin-right: 39px;
-    border: 2px solid white;
-    width: 1px;
 }
