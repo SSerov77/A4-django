@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from users.forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm, AvatarUpdateForm
 from services.models import Order
+from django.http import JsonResponse
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def signup(request):
@@ -17,11 +21,22 @@ def signup(request):
 
 
 @login_required
-def profile(request):
-    user = request.user
-    orders = Order.objects.filter(user=user).order_by('-created_at')
-    context = {
-        'user': user,
+def profile_view(request):
+    if request.method == 'POST' and request.FILES:
+        form = AvatarUpdateForm(
+            request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            return JsonResponse({
+                'success': True,
+                'avatar_url': user.avatar.url if user.avatar else None
+            })
+        return JsonResponse({
+            'success': False,
+            'errors': form.errors.as_json()
+        }, status=400)
+
+    orders = request.user.order_set.all()
+    return render(request, 'users/profile.html', {
         'orders': orders,
-    }
-    return render(request, 'users/profile.html', context)
+    })

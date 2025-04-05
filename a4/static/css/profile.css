@@ -1,3 +1,4 @@
+/* Основные стили */
 .main {
     width: 100%;
     height: 100%;
@@ -27,11 +28,12 @@
 
 .profile-section {
     width: 100%;
-    background-color: #5A1010F7;
+    background-color: #5A1010;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    padding: 40px 0;
 }
 
 .profile-content {
@@ -40,169 +42,152 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 95px;
+    margin-top: 50px;
+    padding: 30px 90px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .left-content {
-    padding-left: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.logout {
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    padding: 12px 24px;
-    background-color: #5A1010F7;
-    opacity: 0.6;
-    text-decoration: none;
-    margin-top: 22px;
-    border: 1px solid white;
-}
-
-.logout:hover {
-    margin-top: 21px;
-    border: 1px solid #5A1010F7;
-    background-color: transparent;
-    color: #5A1010F7;
-    transition: .3s;
+    gap: 20px;
 }
 
 .upload-container {
-    width: 215px;
-    height: 215px;
-    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    min-width: 300px;
+    min-height: 300px;
     background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 10px;
 }
 
-.upload-label {
+.upload-btn {
     font-size: 15px;
-    background-color: #5A1010F7;
-    padding: 90px 60px;
+    background-color: #5A1010;
+    padding: 10px 15px;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: .3s;
+    transition: background-color 0.3s;
 }
 
-.upload-label:hover {
-    background-color: #5A1010F7;
-    opacity: .6;
+.upload-btn:hover {
+    background-color: #8C2727;
 }
 
 .upload-input {
     display: none;
 }
 
+.preview-image {
+    width: 230px;
+    height: 230px;
+    border-radius: 5px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+
 .right-content {
-    padding: 50px 150px 25px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 15px;
 }
 
 .user-info {
+    width: 380px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #9C6F6F;
     font-size: 16px;
     font-weight: 600;
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 380px;
-    height: 45px;
+    border-radius: 5px;
 }
 
 .user-info p {
-    width: 302px;
-    height: 31px;
-    background-color: #5A1010F7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    background-color: #5A1010;
+    padding: 10px;
+    text-align: center;
+    border-radius: 3px;
 }
 
-.change-pass {
-    font-size: 14px;
+.logout, .change-pass {
+    font-size: 16px;
     font-weight: 600;
-    color: #5A1010F7;
-    padding: 7px 18px;
-    border: 1px solid #5A1010F7;
-    background-color: transparent;
-    opacity: 0.6;
-    text-decoration: none;
-}
-
-.change-pass:hover {
-    background-color: #5A1010F7;
     color: #fff;
-    transition: .3s;
+    padding: 10px 20px;
+    background-color: #5A1010;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-.preview-image {
-    max-width: 100%;
-    margin-top: 20px;
-    border-radius: 5px;
+.logout:hover, .change-pass:hover {
+    background-color: #8C2727;
 }
 
 .orders-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 1320px;
-    margin-top: 53px;
-    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 30px;
+    gap: 15px;
 }
 
 .order-item {
-    width: 100%;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .order-info {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 72px;
-    width: 1110px;
-}
-
-.order-info div {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .info-title {
-    width: 165px;
-    height: 39px;
-    border: 1px solid #5A1010F7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #5A1010F7;
+    font-weight: bold;
+    color: #5A1010;
 }
 
 .info-text {
-    width: 165px;
-    height: 39px;
-    background-color: #5A1010F7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #5A1010;
     color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.no-orders-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+    border: 1px dashed #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
 }

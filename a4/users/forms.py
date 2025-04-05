@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.conf import settings
+from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -22,21 +23,23 @@ class CustomUserCreationForm(UserCreationForm):
         required=True,
         label='Почта',
     )
+    avatar = forms.ImageField(required=False, label='Аватар')
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = (
             'username',
             'first_name',
             'last_name',
             'email',
+            'avatar',
             'password1',
             'password2',
         )
 
     def __init__(self, *args, **kwargs):
-        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-        for _, field in self.fields.items():
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
             field.widget.attrs['class'] = 'input'
             field.widget.attrs['placeholder'] = field.label
 
@@ -47,7 +50,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     )
 
     class Meta:
-        model = User
+        model = settings.AUTH_USER_MODEL
         fields = ('username', 'password1')
 
     def __init__(self, *args, **kwargs):
@@ -55,3 +58,18 @@ class CustomAuthenticationForm(AuthenticationForm):
         for _, field in self.fields.items():
             field.widget.attrs['class'] = 'input'
             field.widget.attrs['placeholder'] = field.label
+
+
+class AvatarUpdateForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['avatar']
+
+    def clean_avatar(self):
+        avatar = self.cleaned_data.get('avatar')
+        if avatar:
+            if avatar.size > 5 * 1024 * 1024:
+                raise forms.ValidationError("Файл слишком большой. Максимальный размер - 5MB.")
+            if not avatar.content_type.startswith('image/'):
+                raise forms.ValidationError("Пожалуйста, загрузите изображение.")
+        return avatar
