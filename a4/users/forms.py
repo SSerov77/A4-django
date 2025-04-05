@@ -1,16 +1,12 @@
 from django import forms
-<<<<<<< HEAD
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.conf import settings
 from .models import CustomUser
-=======
 from django.contrib.auth.forms import (
     UserCreationForm,
     AuthenticationForm,
     PasswordChangeForm
 )
-from django.contrib.auth.models import User
->>>>>>> f9f6b0118cbec3c2351b7be2615c9e1e8b068733
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -68,8 +64,6 @@ class CustomAuthenticationForm(AuthenticationForm):
             field.widget.attrs['class'] = 'input'
             field.widget.attrs['placeholder'] = field.label
 
-
-<<<<<<< HEAD
 class AvatarUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUser
@@ -83,11 +77,9 @@ class AvatarUpdateForm(forms.ModelForm):
             if not avatar.content_type.startswith('image/'):
                 raise forms.ValidationError("Пожалуйста, загрузите изображение.")
         return avatar
-=======
 class CustomPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['old_password'].widget.attrs.update({'placeholder': 'Старый пароль'})
         self.fields['new_password1'].widget.attrs.update({'placeholder': 'Новый пароль'})
         self.fields['new_password2'].widget.attrs.update({'placeholder': 'Подтвердите новый пароль'})
->>>>>>> f9f6b0118cbec3c2351b7be2615c9e1e8b068733
