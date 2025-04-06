@@ -164,6 +164,12 @@ footer .logo {
     border-color: #7a2020;
 }
 
+.alert-info {
+    color: black;
+    background-color: #ecfd00;
+    border-color: black;
+}
+
 /* Анимация появления */
 @keyframes slideIn {
     from {

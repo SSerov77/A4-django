@@ -1,9 +1,9 @@
+from django.http import JsonResponse
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from users.forms import CustomUserCreationForm, AvatarUpdateForm
-from services.models import Order
-from django.http import JsonResponse
 import logging
 
 logger = logging.getLogger(__name__)
@@ -14,6 +14,7 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Вы успешно зарегистировались, теперь войдите в аккаунт!")
             return redirect('login')
     else:
         form = CustomUserCreationForm()
