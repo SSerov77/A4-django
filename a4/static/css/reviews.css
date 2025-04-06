@@ -160,22 +160,47 @@
   padding: 20px;
   margin-bottom: 20px;
   width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.review-avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #5A1010F7;
+  flex-shrink: 0;
+}
+
+.review-content {
+  flex: 1;
+  min-width: 0; /* Это важно для правильного переноса текста */
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-author {
+  font-size: 24px;
+  color: #5A1010F7;
+  margin: 0;
+  font-weight: bold;
 }
 
 .review-text {
   font-size: 18px;
   color: #5A1010F7;
-  margin-bottom: 18px;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
 }
 
 .review-date {
   font-size: 14px;
   color: #777;
-  text-align: right;
-}
-
-.review-author {
-  font-size: 38px;
-  color: #555;
-  margin-bottom: 16px;
 }
