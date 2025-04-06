@@ -16,7 +16,7 @@ def services_brand(request):
             else:
                 messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.error(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
+            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь!')
             return redirect('login')
     else:
         form = OrderForm()
@@ -37,7 +37,7 @@ def services_prod(request):
             else:
                 messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.error(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
+            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
             return redirect('login')
     else:
         form = OrderForm()
@@ -58,7 +58,7 @@ def services_install(request):
             else:
                 messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.error(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
+            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
             return redirect('login')
     else:
         form = OrderForm()

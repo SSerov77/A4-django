@@ -57,8 +57,18 @@
     color: black;
     background-color: #5A1010F7;
     border: 2px solid black;
-    margin: 110px auto 0 auto;
     font-family: Orbitron;
     font-size: 24px;
+}
 
+.blocks_price button:hover {
+    transition: .3s;
+    background-color: #8C2727;
+}
+
+
+.blocks_price form {
+    width: 205px;
+    height: 59px;
+    margin: 110px auto 0 auto;
 }

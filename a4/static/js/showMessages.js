@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert.addEventListener('animationend', function() {
                 alert.remove();
             });
-        }, 5000); // Время до исчезновения (5 секунд)
+        }, 3000); // Время до исчезновения (5 секунд)
     });
 });
