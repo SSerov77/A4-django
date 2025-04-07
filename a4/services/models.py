@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from yookassa import Configuration, Payment
 
 
 class Order(models.Model):
@@ -20,8 +21,10 @@ class Order(models.Model):
         verbose_name="Пользователь"
     )
     service = models.CharField(max_length=255, verbose_name="Услуга")
-    description = models.TextField(null=True, blank=True, verbose_name="Описание")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата начала")
+    description = models.TextField(
+        null=True, blank=True, verbose_name="Описание")
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="Дата начала")
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -44,6 +47,31 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Заказ от пользователя {self.user.username} на {self.service}"
+
+
+    def get_payment_url(self):
+        # Инициализация ЮКассы
+        Configuration.account_id = settings.YOOKASSA_SHOP_ID
+        Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
+        
+        payment = Payment.create({
+            "amount": {
+                "value": str(self.price),
+                "currency": "RUB"
+            },
+            "confirmation": {
+                "type": "redirect",
+                "return_url": settings.YOOKASSA_RETURN_URL
+            },
+            "capture": True,
+            "description": f"Оплата заказа на услугу {self.service} (ID: {self.id})",
+            "metadata": {
+                "order_id": self.id,
+                "user_id": self.user.id
+            }
+        })
+        
+        return payment.confirmation.confirmation_url
 
     class Meta:
         verbose_name = "Заказ"

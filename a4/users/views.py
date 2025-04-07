@@ -37,7 +37,7 @@ def profile_view(request):
             'errors': form.errors.as_json()
         }, status=400)
 
-    orders = request.user.order_set.all()
+    orders = request.user.order_set.all().order_by('-created_at')[:5]
     return render(request, 'users/profile.html', {
         'orders': orders,
     })
