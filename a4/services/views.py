@@ -1,6 +1,74 @@
+import json
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.views import View
+from django.http import HttpResponse
+from django.utils.decorators import method_decorator
+from yookassa.domain.common import SecurityHelper
+from yookassa.domain.notification import (
+    WebhookNotificationEventType,
+    WebhookNotificationFactory,
+)
+
 from services.forms import OrderForm
+from services.models import Order
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class YookassaWebhookView(View):
+    http_method_names = ["post"]
+
+    def post(self, request, *args, **kwargs):
+        ip = get_client_ip(request)
+        if not SecurityHelper().is_ip_trusted(ip):
+            return HttpResponse(status=400)
+
+        event_json = json.loads(request.body)
+        try:
+            notification_object = WebhookNotificationFactory().create(
+                event_json,
+            )
+            response_object = notification_object.object
+
+            if (
+                notification_object.event
+                == WebhookNotificationEventType.PAYMENT_SUCCEEDED
+            ):
+                order = Order.objects.get(
+                    pk=response_object.metadata.get("orderNumber"),
+                )
+                order.status = 'paid'
+                order.save()
+
+            elif (
+                notification_object.event
+                == WebhookNotificationEventType.PAYMENT_CANCELED
+            ):
+                order = Order.objects.get(
+                    pk=response_object.metadata.get("orderNumber"),
+                )
+                order.status = 'cancelled'
+                order.save()
+
+            else:
+                return HttpResponse(status=400)
+
+        except Exception as e:
+            print(f"Error processing Yookassa webhook: {str(e)}")
+            return HttpResponse(status=400)
+
+        return HttpResponse(status=200)
 
 
 def services_brand(request):

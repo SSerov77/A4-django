@@ -15,6 +15,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -26,7 +27,6 @@ INSTALLED_APPS = [
     'packages.apps.PackagesConfig',
     'reviews.apps.ReviewsConfig',
     'services.apps.ServicesConfig',
-    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +130,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'sergo.sergej.05@mail.ru'
 EMAIL_HOST_PASSWORD = 'as9BgGhThHbZc0scpWJk'
 DEFAULT_FROM_EMAIL = 'sergo.sergej.05@mail.ru'
+
+CSRF_COOKIE_SECURE = True  # Передавать CSRF-токен только по HTTPS
+SESSION_COOKIE_SECURE = True  # То же для сессионных кук
+CSRF_TRUSTED_ORIGINS = ['https://bbots.ru', 'https://www.bbots.ru']  # Доверенные домены
