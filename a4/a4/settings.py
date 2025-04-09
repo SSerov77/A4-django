@@ -125,8 +125,9 @@ YOOKASSA_RETURN_URL = 'http://127.0.0.1:8000/users/profile/'
 # Настройки Email 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sergo.sergej.05@mail.ru'
 EMAIL_HOST_PASSWORD = 'as9BgGhThHbZc0scpWJk'
 DEFAULT_FROM_EMAIL = 'sergo.sergej.05@mail.ru'
