@@ -14,3 +14,13 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('status', 'is_completed')
     search_fields = ('id', 'user__username', 'service')
     readonly_fields = ('id', 'user', 'service', 'created_at',)
+    fields = (
+        'id',
+        'user',
+        'service',
+        'created_at',
+        'price',
+        'status',
+        'completion_date',
+        'is_completed',
+    )
