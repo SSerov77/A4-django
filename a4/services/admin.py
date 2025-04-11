@@ -19,6 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
         'user',
         'service',
         'created_at',
+        'description',
         'price',
         'status',
         'completion_date',
