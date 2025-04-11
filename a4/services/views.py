@@ -24,53 +24,6 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-
-@method_decorator(csrf_exempt, name='dispatch')
-class YookassaWebhookView(View):
-    http_method_names = ["post"]
-
-    def post(self, request, *args, **kwargs):
-        ip = get_client_ip(request)
-        if not SecurityHelper().is_ip_trusted(ip):
-            return HttpResponse(status=400)
-
-        event_json = json.loads(request.body)
-        try:
-            notification_object = WebhookNotificationFactory().create(
-                event_json,
-            )
-            response_object = notification_object.object
-
-            if (
-                notification_object.event
-                == WebhookNotificationEventType.PAYMENT_SUCCEEDED
-            ):
-                order = Order.objects.get(
-                    pk=response_object.metadata.get("orderNumber"),
-                )
-                order.status = 'paid'
-                order.save()
-
-            elif (
-                notification_object.event
-                == WebhookNotificationEventType.PAYMENT_CANCELED
-            ):
-                order = Order.objects.get(
-                    pk=response_object.metadata.get("orderNumber"),
-                )
-                order.status = 'cancelled'
-                order.save()
-
-            else:
-                return HttpResponse(status=400)
-
-        except Exception as e:
-            print(f"Error processing Yookassa webhook: {str(e)}")
-            return HttpResponse(status=400)
-
-        return HttpResponse(status=200)
-
-
 def services_brand(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
@@ -132,3 +85,10 @@ def services_install(request):
         form = OrderForm()
 
     return render(request, 'services/services-install.html', {'form': form})
+
+
+def webhook(request):
+    print("Request method:", request.method)
+    print("POST data:", request.POST)     # данные формы
+    print("Headers:", request.headers)    # заголовки
+    print("Body (raw):", request.body)
