@@ -92,3 +92,5 @@ def webhook(request):
     print("POST data:", request.POST)     # данные формы
     print("Headers:", request.headers)    # заголовки
     print("Body (raw):", request.body)
+
+    return HttpResponse("Check console for request details")
