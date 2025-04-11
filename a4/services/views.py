@@ -24,6 +24,7 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
+
 def services_brand(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
@@ -35,9 +36,11 @@ def services_brand(request):
                 messages.success(request, 'Ваша заявка успешно отправлена!')
                 return redirect('services_brand')
             else:
-                messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
+                messages.error(
+                    request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь!')
+            messages.info(
+                request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь!')
             return redirect('login')
     else:
         form = OrderForm()
@@ -56,9 +59,11 @@ def services_prod(request):
                 messages.success(request, 'Ваша заявка успешно отправлена!')
                 return redirect('services_prod')
             else:
-                messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
+                messages.error(
+                    request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
+            messages.info(
+                request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
             return redirect('login')
     else:
         form = OrderForm()
@@ -77,9 +82,11 @@ def services_install(request):
                 messages.success(request, 'Ваша заявка успешно отправлена!')
                 return redirect('services_install')
             else:
-                messages.error(request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
+                messages.error(
+                    request, 'Произошла ошибка. Пожалуйста, попробуйте ещё раз.')
         else:
-            messages.info(request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
+            messages.info(
+                request, 'Чтобы оставить заявку, пожалуйста, авторизуйтесь.')
             return redirect('login')
     else:
         form = OrderForm()
@@ -88,9 +95,30 @@ def services_install(request):
 
 
 def webhook(request):
-    print("Request method:", request.method)
-    print("POST data:", request.POST)     # данные формы
-    print("Headers:", request.headers)    # заголовки
-    print("Body (raw):", request.body)
+    event_json = json.loads(request.body)
+    notification_object = WebhookNotificationFactory().create(
+        event_json,
+    )
+    response_object = notification_object.object
 
-    return HttpResponse("Check console for request details")
+    order = Order.objects.get(
+        pk=response_object.metadata.get("order_id")
+    )
+
+    if (
+        notification_object.event
+        == WebhookNotificationEventType.PAYMENT_SUCCEEDED
+    ):
+        order.status = 'paid'
+    elif (
+        notification_object.event
+        == WebhookNotificationEventType.PAYMENT_CANCELED
+    ):
+        order.status = 'cancelled'
+    else:
+        return HttpResponse(status=400)
+
+    order.save()
+
+        
+    return HttpResponse(status=200)
