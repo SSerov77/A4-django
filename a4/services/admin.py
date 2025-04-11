@@ -4,6 +4,7 @@ from services.models import Order
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'user',
         'service',
         'status',
@@ -11,5 +12,5 @@ class OrderAdmin(admin.ModelAdmin):
         'is_completed',
     )
     list_filter = ('status', 'is_completed')
-    search_fields = ('user__username', 'service')
-    readonly_fields = ('user', 'service', 'created_at',)
+    search_fields = ('id', 'user__username', 'service')
+    readonly_fields = ('id', 'user', 'service', 'created_at',)
