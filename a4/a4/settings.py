@@ -120,7 +120,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Настройки ЮКассы
 YOOKASSA_SHOP_ID = '1066427'
 YOOKASSA_SECRET_KEY = 'test_v8wPUnHtz_cj3ezPqlmS9cBOwLGQv5d_hAgqRypyJ4w'
-YOOKASSA_RETURN_URL = 'http://127.0.0.1:8000/users/profile/'
+YOOKASSA_RETURN_URL = 'https://bbots.ru/users/profile/'
 
 # Настройки Email 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
