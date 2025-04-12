@@ -48,31 +48,6 @@ class Order(models.Model):
     def __str__(self):
         return f"Заказ от пользователя {self.user.username} на {self.service}"
 
-
-    def get_payment_url(self):
-        # Инициализация ЮКассы
-        Configuration.account_id = settings.YOOKASSA_SHOP_ID
-        Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
-        
-        payment = Payment.create({
-            "amount": {
-                "value": str(self.price),
-                "currency": "RUB"
-            },
-            "confirmation": {
-                "type": "redirect",
-                "return_url": settings.YOOKASSA_RETURN_URL
-            },
-            "capture": True,
-            "description": f"Оплата заказа на услугу {self.service} (ID: {self.id})",
-            "metadata": {
-                "order_id": self.id,
-                "user_id": self.user.id
-            }
-        })
-        
-        return payment.confirmation.confirmation_url
-
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
