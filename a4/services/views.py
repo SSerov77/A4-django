@@ -2,18 +2,14 @@ import json
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
-from django.views import View
 from django.http import HttpResponse
-from django.utils.decorators import method_decorator
-from yookassa.domain.common import SecurityHelper
 from yookassa.domain.notification import (
     WebhookNotificationEventType,
     WebhookNotificationFactory,
 )
 
 from services.forms import OrderForm
-from services.models import Order
+from services.models import Order, Payment
 
 
 def get_client_ip(request):
@@ -96,6 +92,7 @@ def services_install(request):
 
 def webhook(request):
     event_json = json.loads(request.body)
+    print(event_json)
     notification_object = WebhookNotificationFactory().create(
         event_json,
     )
@@ -117,6 +114,12 @@ def webhook(request):
         order.status = 'cancelled'
     else:
         return HttpResponse(status=400)
+    
+    Payment.objects.create(
+        order=order,
+        user=order.user,
+        payment_id=response_object.id,
+    )
 
     order.save()
 

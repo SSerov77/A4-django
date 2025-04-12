@@ -76,3 +76,12 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+
+
+class Payment(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="payments")
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    payment_id = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return f"Платёж {self.payment_id} для заказа {self.order.id}"
