@@ -1,4 +1,5 @@
 import json
+import logging
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -92,7 +93,7 @@ def services_install(request):
 
 def webhook(request):
     event_json = json.loads(request.body)
-    print(event_json)
+    logging.info(event_json)
     notification_object = WebhookNotificationFactory().create(
         event_json,
     )
@@ -117,7 +118,7 @@ def webhook(request):
     
     UserPayment.objects.create(
         order=order,
-        user=order.user,
+        user_id=order.user,
         payment_id=response_object.id,
     )
 
