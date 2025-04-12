@@ -9,7 +9,7 @@ from yookassa.domain.notification import (
 )
 
 from services.forms import OrderForm
-from services.models import Order, Payment
+from services.models import Order, UserPayment
 
 
 def get_client_ip(request):
@@ -115,7 +115,7 @@ def webhook(request):
     else:
         return HttpResponse(status=400)
     
-    Payment.objects.create(
+    UserPayment.objects.create(
         order=order,
         user=order.user,
         payment_id=response_object.id,
