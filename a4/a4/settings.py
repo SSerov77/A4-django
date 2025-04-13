@@ -1,13 +1,16 @@
+from os import getenv
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-1zl63)d-w%yc$161ul8+j#+rp1zz*eblp-3=a$sq6ocf-mdkl&'
+SECRET_KEY = getenv('DJANGO_SECRET_KEY', 'YOUR_SECRET_KEY')
 
-DEBUG = True
+DEBUG = getenv('DJANGO_DEBUG', True)
 
 ALLOWED_HOSTS = ['*']
-
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
@@ -99,23 +102,27 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Media files
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Настройки ЮКассы
-YOOKASSA_SHOP_ID = '1066427'
-YOOKASSA_SECRET_KEY = 'test_v8wPUnHtz_cj3ezPqlmS9cBOwLGQv5d_hAgqRypyJ4w'
-YOOKASSA_RETURN_URL = 'https://bbots.ru/users/profile/'
+YOOKASSA_SHOP_ID = getenv('YOOKASSA_SHOP_ID', '1070197')
+YOOKASSA_SECRET_KEY = getenv('YOOKASSA_SECRET_KEY', 'test_ps9J2rcI05aDeHkwTLTmJ6wRPvrIJ5UjpL6EAMna48E')
+YOOKASSA_RETURN_URL = getenv('YOOKASSA_RETURN_URL', 'http://localhost:8000/')
 
 # Настройки Email 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'sergo.sergej.05@mail.ru'
-EMAIL_HOST_PASSWORD = 'as9BgGhThHbZc0scpWJk'
-DEFAULT_FROM_EMAIL = 'sergo.sergej.05@mail.ru'
+EMAIL_HOST_USER = getenv('EMAIL_HOST_USER', 'advertisingcompanya4@mail.ru')
+EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD', 'AMzACjT4g19fmxvTDWpR')
+DEFAULT_FROM_EMAIL = getenv('EMAIL_HOST_USER', 'advertisingcompanya4@mail.ru')
 
-CSRF_COOKIE_SECURE = True  # Передавать CSRF-токен только по HTTPS
-SESSION_COOKIE_SECURE = True  # То же для сессионных кук
-CSRF_TRUSTED_ORIGINS = ['https://bbots.ru', 'https://www.bbots.ru']  # Доверенные домены
+if DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_TRUSTED_ORIGINS = getenv(
+        'CSRF_TRUSTED_ORIGINS',
+        'http://127.0.0.1',
+    ).split(',')

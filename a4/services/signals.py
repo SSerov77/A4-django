@@ -1,4 +1,5 @@
 from django.db.models.signals import pre_save
+from django.conf import settings
 from django.dispatch import receiver
 from django.core.mail import EmailMessage
 
@@ -31,9 +32,9 @@ def send_payment_email(order):
     email = EmailMessage(
         subject,
         body,
-        'sergo.sergej.05@mail.ru',  # Должен совпадать с EMAIL_HOST_USER
+        settings.EMAIL_HOST_USER,  # Должен совпадать с EMAIL_HOST_USER
         [order.user.email],
-        reply_to=['sergo.sergej.05@mail.ru'],
+        reply_to=[settings.EMAIL_HOST_USER],
     )
     
     try:
