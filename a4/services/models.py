@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+
 from yookassa import Configuration, Payment
 
 
@@ -50,7 +51,6 @@ class Order(models.Model):
 
 
     def get_payment_url(self):
-        # Инициализация ЮКассы
         Configuration.account_id = settings.YOOKASSA_SHOP_ID
         Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
         
