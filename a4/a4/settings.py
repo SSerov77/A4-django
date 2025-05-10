@@ -126,3 +126,7 @@ if DEBUG:
         'CSRF_TRUSTED_ORIGINS',
         'http://127.0.0.1',
     ).split(',')
+
+# Настройки Yandex Cloud
+YANDEX_FOLDER_ID = getenv('YANDEX_FOLDER_ID')
+YANDEX_API_KEY = getenv('YANDEX_API_KEY')
