@@ -36,7 +36,7 @@ cd a4
 ```bash
 python manage.py runserver
 ```
-> Пример запуска:
+> Пример запуска:<br>
 [![image.png](https://i.postimg.cc/rpBzycdj/image.png)](https://postimg.cc/06C9ZT0K)
 
 6) Перейти в браузере по ссылке:
@@ -51,14 +51,14 @@ http://127.0.0.1:8000/
 ```bash
 python manage.py makemigrations
 ```
-> Пример:
+> Пример:<br>
 [![image.png](https://i.postimg.cc/SKT7gnvs/image.png)](https://postimg.cc/8Fv65zDQ)
 
 2) Применить миграции:
 ```bash
 python manage.py migrate
 ```
-> Пример:
+> Пример:<br>
 [![image.png](https://i.postimg.cc/NfkXNyyc/image.png)](https://postimg.cc/PPNNJ5z3)
 
 
